@@ -1,0 +1,165 @@
+{
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "order_number": {
+      "type": "string"
+    },
+    "restaurant_id": {
+      "type": "string"
+    },
+    "restaurant_name": {
+      "type": "string"
+    },
+    "delivery_address_line": {
+      "type": "string"
+    },
+    "delivery_city": {
+      "type": "string"
+    },
+    "delivery_state": {
+      "type": "string"
+    },
+    "delivery_pincode": {
+      "type": "string"
+    },
+    "subtotal": {
+      "type": "number",
+      "default": 0
+    },
+    "discount": {
+      "type": "number",
+      "default": 0
+    },
+    "tax": {
+      "type": "number",
+      "default": 0
+    },
+    "delivery_fee": {
+      "type": "number",
+      "default": 0
+    },
+    "total_amount": {
+      "type": "number",
+      "default": 0
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "unpaid",
+        "paid",
+        "partially_paid",
+        "refunded"
+      ],
+      "default": "unpaid"
+    },
+    "order_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "confirmed",
+        "preparing",
+        "packed",
+        "assigned",
+        "out_for_delivery",
+        "arrived",
+        "delivered",
+        "cancelled"
+      ],
+      "default": "pending"
+    },
+    "delivery_status": {
+      "type": "string",
+      "enum": [
+        "not_assigned",
+        "assigned",
+        "picked_up",
+        "out_for_delivery",
+        "arrived",
+        "delivered",
+        "cancelled"
+      ],
+      "default": "not_assigned"
+    },
+    "requested_delivery_date": {
+      "type": "string"
+    },
+    "requested_delivery_slot": {
+      "type": "string"
+    },
+    "assigned_delivery_partner_id": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "placed_at": {
+      "type": "string"
+    },
+    "confirmed_at": {
+      "type": "string"
+    },
+    "delivered_at": {
+      "type": "string"
+    },
+    "cancelled_at": {
+      "type": "string"
+    },
+    "items_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "user_condition": {
+            "role": "restaurant"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

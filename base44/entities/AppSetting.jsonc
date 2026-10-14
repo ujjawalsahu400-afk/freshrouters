@@ -1,0 +1,54 @@
+{
+  "name": "AppSetting",
+  "type": "object",
+  "properties": {
+    "business_name": {
+      "type": "string",
+      "default": "FreshSupply"
+    },
+    "logo_url": {
+      "type": "string"
+    },
+    "order_cutoff_time": {
+      "type": "string",
+      "default": "22:30"
+    },
+    "delivery_slots": {
+      "type": "string"
+    },
+    "tax_rate": {
+      "type": "number",
+      "default": 5
+    },
+    "delivery_fee": {
+      "type": "number",
+      "default": 50
+    },
+    "minimum_order_amount": {
+      "type": "number",
+      "default": 500
+    },
+    "default_credit_limit": {
+      "type": "number",
+      "default": 50000
+    }
+  },
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

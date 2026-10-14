@@ -1,0 +1,103 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "category_id": {
+      "type": "string"
+    },
+    "category_name": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "emoji": {
+      "type": "string"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "selling_price": {
+      "type": "number"
+    },
+    "cost_price": {
+      "type": "number"
+    },
+    "minimum_order_quantity": {
+      "type": "number",
+      "default": 1
+    },
+    "maximum_order_quantity": {
+      "type": "number",
+      "default": 9999
+    },
+    "current_stock": {
+      "type": "number",
+      "default": 0
+    },
+    "reserved_stock": {
+      "type": "number",
+      "default": 0
+    },
+    "low_stock_threshold": {
+      "type": "number",
+      "default": 10
+    },
+    "sku": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active"
+    },
+    "stock_status": {
+      "type": "string",
+      "enum": [
+        "in_stock",
+        "low_stock",
+        "out_of_stock"
+      ],
+      "default": "in_stock"
+    },
+    "popularity": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "selling_price",
+    "unit"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
